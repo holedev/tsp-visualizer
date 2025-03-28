@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TSP Visualizer
+
+A modern, interactive visualization tool for the Traveling Salesman Problem (TSP) implementing multiple solving algorithms with real-time visualization.
+
+## Features
+
+- 🎯 **Multiple TSP Algorithms**
+  - Brute Force (optimal for ≤10 points)
+  - Nearest Neighbor (greedy approach)
+  - Christofides Algorithm
+  - Simulated Annealing
+  - Hybrid (Nearest Neighbor + Simulated Annealing)
+
+- 🎨 **Interactive Visualization**
+  - Real-time algorithm execution
+  - Canvas-based rendering
+  - Adjustable animation speed
+  - Point coordinate display
+
+- 🔧 **Flexible Input Methods**
+  - Click-to-place points
+  - Random point generation
+  - Vietnam cities dataset
+  - Custom starting point selection
+
+- 📊 **Performance Tracking**
+  - Execution time measurement
+  - Path distance calculation
+  - Historical run comparisons
+  - Algorithm performance stats
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js >= 20.0.0
+- pnpm >= 10.6.5
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/yourusername/tsp-visualize.git
+
+# Navigate to project directory
+cd tsp-visualize
+
+# Install dependencies
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Start development server with Turbopack
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit `http://localhost:3000` to see the application.
 
-## Learn More
+### Production Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Create production build
+pnpm build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Start production server
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+1. **Adding Points**
+   - Click on the canvas to place points manually
+   - Use "Generate" to create random points
+   - Click "Load Example" for Vietnam cities dataset
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Selecting Algorithm**
+   - Choose algorithm from dropdown
+   - Adjust algorithm-specific parameters if available
+   - Select starting point (optional)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Running Visualization**
+   - Adjust animation speed if desired
+   - Click "Start" to begin visualization
+   - Watch real-time progress
+   - View statistics in right panel
+
+4. **Comparing Algorithms**
+   - Switch to "Compare All" mode
+   - Run all algorithms simultaneously
+   - Compare performance metrics
+   - View color-coded results
+
+## Technical Stack
+
+- Next.js 15.2.3
+- React 19.0.0
+- TypeScript 5.x
+- Tailwind CSS 4.x
+- Shadcn UI (via Radix UI)
+  - @radix-ui/react-dialog 1.1.6
+  - @radix-ui/react-label 2.1.2
+  - @radix-ui/react-select 2.1.6
+  - @radix-ui/react-slider 1.2.3
+  - @radix-ui/react-slot 1.1.2
+
+## Project Structure
+
+```
+tsp-visualize/
+├── app/                 # Next.js app directory
+├── components/         # React components
+│   ├── ui/            # Shadcn UI components
+│   └── tsp-visualizer # Main visualization component
+├── lib/               # Core logic
+│   ├── cities-data    # Geographic data
+│   ├── tsp-algorithms # Algorithm implementations
+│   └── utils          # Utility functions
+└── public/            # Static assets
+```
+
+## Algorithm Details
+
+### Brute Force
+- Finds optimal solution
+- Limited to 10 points
+- Comprehensive path exploration
+
+### Nearest Neighbor
+- Greedy approach
+- Fast execution
+- Good for large datasets
+- Sub-optimal solutions
+
+### Christofides
+- Approximation algorithm
+- Guaranteed performance ratio
+- Balanced approach
+
+### Simulated Annealing
+- Metaheuristic approach
+- Customizable parameters
+- Escapes local optima
+
+### Hybrid
+- Combines Nearest Neighbor and Simulated Annealing
+- Better initial solutions
+- Refined optimization
+
+## Performance Notes
+
+- Brute Force limited to 10 points
+- Other algorithms support up to 100 points
+- Animation speed adjustable (1-100%)
+- Real-time visualization may affect performance
+- Consider reducing animation speed for large datasets
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Algorithm implementations based on classical TSP solutions
+- Vietnam cities dataset included for real-world example
+- UI components from Shadcn UI (v0.7.1)
